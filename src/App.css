@@ -8,3 +8,11 @@
     height: 50px;
     border: 1px solid #eee;
 }
+
+.gameOver {
+    color: red;
+}
+
+.winner {
+    color: green
+}
