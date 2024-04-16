@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 const Cell =({id,value, handleClick}:{id:number, value: string, handleClick: (id:number)=>void}) => {
     return(
@@ -26,7 +26,7 @@ export default function GameBoard(){
         }
         return winner;
     }
-    let winner =    findWinner();    
+    let winner =   useMemo(() => findWinner(), [game])  
 
     const handleClick =(index:number) => {
     if(game[index] || winner) {
@@ -44,7 +44,7 @@ return (
 <>
 <div className='tic-tac-toe parent'>
   
-    {GRID.map((item, index) => {
+    {game.map((item, index) => {
         return (<Cell id={index} key={index} value={game[index]} handleClick={handleClick}/>)
     })
     }
